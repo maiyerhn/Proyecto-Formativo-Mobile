@@ -137,7 +137,7 @@ class _InicioState extends State<Inicio> {
             const SizedBox(height: 10),
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Inicioad()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Inicioad()));
               },
               child: const Text(
                 '¿Olvidaste tu contraseña?',
@@ -193,9 +193,9 @@ class _InicioState extends State<Inicio> {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('jwt_token', token);
       if (role == 'ADMINISTRADOR') {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Inicioad()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const Inicioad()));
       } else if (role == 'CLIENTE') {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Rol desconocido: $role')),
@@ -209,11 +209,11 @@ class _InicioState extends State<Inicio> {
     }
   } on SocketException {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error de conexión. Verifica tu conexión a internet.')),
+      const SnackBar(content: Text('Error de conexión. Verifica tu conexión a internet.')),
     );
   } on FormatException {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error en la respuesta del servidor.')),
+      const SnackBar(content: Text('Error en la respuesta del servidor.')),
     );
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(

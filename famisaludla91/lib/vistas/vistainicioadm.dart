@@ -16,7 +16,7 @@ class Inicioad extends StatelessWidget {
 
     if (token == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('No se encontró el token de autenticación.')),
+        const SnackBar(content: Text('No se encontró el token de autenticación.')),
       );
       return;
     }
@@ -41,12 +41,12 @@ class Inicioad extends StatelessWidget {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al cerrar sesión.')),
+        const SnackBar(content: Text('Error al cerrar sesión.')),
       );
     }
   } on SocketException {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error de conexión. Verifica tu conexión a internet.')),
+      const SnackBar(content: Text('Error de conexión. Verifica tu conexión a internet.')),
     );
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(

@@ -32,18 +32,14 @@ class _HomePageState extends State<HomePage> {
         if (response.statusCode == 200) {
           List<dynamic> data = jsonDecode(response.body);
 
-          if (data is List) {
-            return data.map((item) {
-              if (item is Map<String, dynamic>) {
-                return Producto.fromJson(item);
-              } else {
-                throw Exception('Formato de datos inesperado');
-              }
-            }).toList();
-          } else {
-            throw Exception('Formato de datos inesperado');
-          }
-        } else {
+          return data.map((item) {
+            if (item is Map<String, dynamic>) {
+              return Producto.fromJson(item);
+            } else {
+              throw Exception('Formato de datos inesperado');
+            }
+          }).toList();
+                } else {
           throw Exception('Error al cargar productos: ${response.statusCode}');
         }
       } else {
@@ -61,7 +57,7 @@ class _HomePageState extends State<HomePage> {
 
     if (token == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('No se encontró el token de autenticación.')),
+        const SnackBar(content: Text('No se encontró el token de autenticación.')),
       );
       return;
     }
@@ -86,12 +82,12 @@ class _HomePageState extends State<HomePage> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error al cerrar sesión.')),
+        const SnackBar(content: Text('Error al cerrar sesión.')),
       );
     }
   } on SocketException {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Error de conexión. Verifica tu conexión a internet.')),
+      const SnackBar(content: Text('Error de conexión. Verifica tu conexión a internet.')),
     );
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(
