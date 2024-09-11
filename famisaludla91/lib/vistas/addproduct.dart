@@ -1,3 +1,4 @@
+import 'package:famisaludla91/vistas/productos.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -5,6 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 
 class AddProductScreen extends StatefulWidget {
+  const AddProductScreen({super.key});
+
   @override
   _AddProductScreenState createState() => _AddProductScreenState();
 }
@@ -66,14 +69,19 @@ Future<void> _saveProduct() async {
     _isUploading = false;
   });
 
-  if (response.statusCode == 201) {
-    print('Product uploaded successfully');
-    // Optionally, navigate back or show a success message
-  } else {
-    final responseBody = await response.stream.bytesToString();
-    print('Failed to upload product: ${response.statusCode}, ${responseBody}');
-    // Optionally, show an error message
-  }
+ if (response.statusCode == 200) {
+  print('Product uploaded successfully');
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const Productos(), 
+    ),
+  );
+} else {
+  final responseBody = await response.stream.bytesToString();
+  print('Failed to upload product: ${response.statusCode}, $responseBody');
+}
+
 }
 
 
@@ -90,37 +98,37 @@ Future<void> _saveProduct() async {
           children: [
             TextField(
               controller: _nameController,
-              decoration: InputDecoration(labelText: 'Nombre'),
+              decoration: const InputDecoration(labelText: 'Nombre'),
             ),
             TextField(
               controller: _descriptionController,
-              decoration: InputDecoration(labelText: 'Descripción'),
+              decoration: const InputDecoration(labelText: 'Descripción'),
             ),
             TextField(
               controller: _priceController,
-              decoration: InputDecoration(labelText: 'Precio'),
+              decoration: const InputDecoration(labelText: 'Precio'),
               keyboardType: TextInputType.number,
             ),
             TextField(
               controller: _stockController,
-              decoration: InputDecoration(labelText: 'Stock'),
+              decoration: const InputDecoration(labelText: 'Stock'),
               keyboardType: TextInputType.number,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _image == null
-                ? Text('No image selected.')
+                ? const Text('No image selected.')
                 : Image.file(_image!, height: 150),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _pickImage,
-              child: Text('Seleccionar Imagen'),
+              child: const Text('Seleccionar Imagen'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _isUploading
-                ? CircularProgressIndicator()
+                ? const CircularProgressIndicator()
                 : ElevatedButton(
                     onPressed: _saveProduct,
-                    child: Text('Guardar'),
+                    child: const Text('Guardar'),
                   ),
           ],
         ),
