@@ -3,7 +3,12 @@ class ProductsController < ApplicationController
  # GET /products
  def index
   @products = Product.all
-  render json: @products
+  products_with_images = @products.map do |product|
+    image_url = product.image.attached? ? url_for(product.image) : nil
+    product.attributes.merge(image_url: image_url)
+  end
+
+  render json: products_with_images
 end
 
 # GET /products/:id
