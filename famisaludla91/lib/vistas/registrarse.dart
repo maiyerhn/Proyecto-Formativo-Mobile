@@ -232,7 +232,7 @@ class _RegistroPageState extends State<RegistroPage> {
   final String apellido = apellidoController.text;
   final String telefono = telefonoController.text;
   final String direccion = direccionController.text;
-  final String email = emailController.text;
+  final String email = emailController.text.trim().toLowerCase();
   final String password = passwordController.text;
   final String confirmPassword = confirmPasswordController.text;
 
@@ -282,7 +282,7 @@ class _RegistroPageState extends State<RegistroPage> {
   }
 
   try {
-    final url = Uri.parse('https://3d7f-45-238-146-4.ngrok-free.app/signup');
+    final url = Uri.parse('https://2b97-45-238-146-4.ngrok-free.app/signup');
     final response = await http.post(
       url,
       body: jsonEncode({

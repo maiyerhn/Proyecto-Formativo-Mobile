@@ -3,7 +3,7 @@ class Producto {
   final String name;
   final String description;
   final int price;
-  final String image;
+  final String imageUrl; 
   final int stock;
 
   Producto({
@@ -11,7 +11,7 @@ class Producto {
     required this.name,
     required this.description,
     required this.price,
-    required this.image,
+    required this.imageUrl, 
     required this.stock,
   });
 
@@ -21,11 +21,10 @@ class Producto {
       name: json['name'],
       description: json['description'],
       price: json['price'],
-      image: json['image'],
+      imageUrl: json['image_url'] ?? '', 
       stock: json['stock'],
     );
   }
-
 
   Map<String, dynamic> toJson() {
     return {
@@ -33,7 +32,7 @@ class Producto {
       'name': name,
       'description': description,
       'price': price,
-      'image': image,
+      'image_url': imageUrl, 
       'stock': stock,
     };
   }
