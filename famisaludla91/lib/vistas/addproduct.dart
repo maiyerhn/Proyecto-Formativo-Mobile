@@ -47,7 +47,7 @@ Future<void> _saveProduct() async {
     _isUploading = true;
   });
 
-  var uri = Uri.parse('https://c7fc-45-238-146-4.ngrok-free.app/products');
+  var uri = Uri.parse('https://2b97-45-238-146-4.ngrok-free.app/products');
   var request = http.MultipartRequest('POST', uri);
 
   request.fields['product[name]'] = _nameController.text;

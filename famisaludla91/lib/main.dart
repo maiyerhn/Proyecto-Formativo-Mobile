@@ -175,11 +175,11 @@ class _InicioState extends State<Inicio> {
   }
 
   Future<void> _login(BuildContext context) async {
-  final String email = emailController.text;
+  final String email = emailController.text.trim().toLowerCase();
   final String password = passwordController.text;
 
   try {
-    final url = Uri.parse('https://c7fc-45-238-146-4.ngrok-free.app/login');
+    final url = Uri.parse('https://2b97-45-238-146-4.ngrok-free.app/login');
     final response = await http.post(
       url,
       body: jsonEncode({'email': email, 'password': password}),
