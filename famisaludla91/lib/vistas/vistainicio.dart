@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   Future<List<Producto>> _fetchProductos() async {
     try {
       final response = await http
-          .get(Uri.parse('https://2b97-45-238-146-4.ngrok-free.app/products'));
+          .get(Uri.parse('https://ba3e-45-238-146-4.ngrok-free.app/products'));
 
       final contentType = response.headers['content-type'];
       if (contentType != null && contentType.contains('application/json')) {
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _logout(BuildContext context) async {
     try {
-      final url = Uri.parse('https://2b97-45-238-146-4.ngrok-free.app/logout');
+      final url = Uri.parse('https://ba3e-45-238-146-4.ngrok-free.app/logout');
       final String? token = await _getToken();
 
       if (token == null) {

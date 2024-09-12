@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:famisaludla91/vistas/inventario.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:famisaludla91/vistas/registrarse.dart';
 import 'package:famisaludla91/vistas/vistainicio.dart';
@@ -179,7 +180,7 @@ class _InicioState extends State<Inicio> {
   final String password = passwordController.text;
 
   try {
-    final url = Uri.parse('https://2b97-45-238-146-4.ngrok-free.app/login');
+    final url = Uri.parse('https://ba3e-45-238-146-4.ngrok-free.app/login');
     final response = await http.post(
       url,
       body: jsonEncode({'email': email, 'password': password}),
@@ -193,7 +194,7 @@ class _InicioState extends State<Inicio> {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('jwt_token', token);
       if (role == 'ADMINISTRADOR') {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const Inicioad()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const Inventario()));
       } else if (role == 'CLIENTE') {
         Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
       } else {
