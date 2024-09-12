@@ -11,7 +11,7 @@ class Inicioad extends StatelessWidget {
   const Inicioad({super.key});
     Future<void> _logout(BuildContext context) async {
   try {
-    final url = Uri.parse('https://2b97-45-238-146-4.ngrok-free.app/logout');
+    final url = Uri.parse('https://ba3e-45-238-146-4.ngrok-free.app/logout');
     final String? token = await _getToken(); 
 
     if (token == null) {

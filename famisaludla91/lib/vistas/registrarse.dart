@@ -282,7 +282,7 @@ class _RegistroPageState extends State<RegistroPage> {
   }
 
   try {
-    final url = Uri.parse('https://2b97-45-238-146-4.ngrok-free.app/signup');
+    final url = Uri.parse('https://ba3e-45-238-146-4.ngrok-free.app/signup');
     final response = await http.post(
       url,
       body: jsonEncode({
